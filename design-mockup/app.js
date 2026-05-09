@@ -99,7 +99,7 @@ const tierData = {
           'Real classroom video — built right in'
         ],
         anchor:'NorthStar fits into the flow of teaching rather than pulling teachers away from it.' },
-  4:  { role:'Interventionists', tagline:'Evidence-based intervention, built into the system.',
+  4:  { role:'Interventionist', tagline:'Evidence-based intervention, built into the system.',
         body:'Interventionists work alongside teachers with shared evidence, Joey-analyzed artifacts, and a complete science-of-reading–aligned written code continuum — so intervention is guided by evidence, not guesswork.',
         workspace:'Caseload, intervention plans, and progress monitoring tools.',
         pathways:'Diagnostic-aligned intervention pathways and resources.',
@@ -112,7 +112,7 @@ const tierData = {
           'Know-Need-Teach-Check planning sheets'
         ],
         anchor:'Intervention becomes precise, coherent, and connected to classroom instruction.' },
-  5:  { role:'Building Coach',   tagline:'Coaching cycles, observation, and feedback — in one place.',
+  5:  { role:'Coach',   tagline:'Coaching cycles, observation, and feedback — in one place.',
         body:'Building coaches get coaching-cycle workflows, observation tools, and trend insights so they can focus on people and practice while NorthStar handles organization.',
         workspace:'Coaching-cycle dashboard, schedule, and observation tools.',
         pathways:'Coaching micro-credentials and shared learning libraries.',
@@ -125,7 +125,7 @@ const tierData = {
           'Goal alignment to building priorities'
         ],
         anchor:'Coaches focus on people and practice; NorthStar carries the rest.' },
-  6:  { role:'School Continuous Improvement Leadership Team',
+  6:  { role:'School Leadership Team',
         tagline:'A shared dashboard for shared improvement.',
         body:'School improvement teams get a shared dashboard where Joey aggregates classroom evidence into school-wide insight — patterns, not isolated examples — so conversations stay focused on instruction and learning.',
         workspace:'Interactive school improvement plan and team meeting hub.',
@@ -139,7 +139,7 @@ const tierData = {
           'Coaching, micro-credential, and evidence cycle activity'
         ],
         anchor:'Leadership conversations become focused, collaborative, and grounded in evidence.' },
-  7:  { role:'Building Principal', tagline:'See the building. Lead the building.',
+  7:  { role:'School Admin', tagline:'See the building. Lead the building.',
         body:'Principals get a strategic dashboard that turns daily classroom activity into actionable building-level insight — implementation, learning trends, and where support is needed.',
         workspace:'Building dashboard with implementation and learning insight.',
         pathways:'Leadership micro-credentials and routines.',
@@ -165,7 +165,7 @@ const tierData = {
           'Coherent coaching practice across the district'
         ],
         anchor:'District coaching becomes coherent — not duplicative, not isolated.' },
-  9:  { role:'District Continuous Improvement Leadership Team',
+  9:  { role:'District Leadership Team',
         tagline:'Joey organizes the learning. The team guides the improvement.',
         body:'District improvement teams get an aggregated view of system health and improvement progress, anchored in real classroom evidence — so improvement plans live and breathe instead of sitting in a binder.',
         workspace:'District improvement plan and shared team workspace.',

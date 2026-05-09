@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" preserveAspectRatio="none">
+  <defs>
+    <!-- Outer slab: light top edge, soft shadow at base -->
+    <linearGradient id="slabG" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%"   stop-color="#FFFFFF"/>
+      <stop offset="55%"  stop-color="#FBF5E8"/>
+      <stop offset="100%" stop-color="#E8DEC8"/>
+    </linearGradient>
+    <!-- Inner cap/base bar: shadow top + bottom, lighter middle -->
+    <linearGradient id="innerG" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%"   stop-color="#DDD1B8"/>
+      <stop offset="50%"  stop-color="#FBF5E8"/>
+      <stop offset="100%" stop-color="#DDD1B8"/>
+    </linearGradient>
+    <!-- Shaft: cylindrical horizontal shading -->
+    <linearGradient id="shaftG" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%"   stop-color="#DCD0B4"/>
+      <stop offset="22%"  stop-color="#F4ECD6"/>
+      <stop offset="50%"  stop-color="#FFFFFF"/>
+      <stop offset="78%"  stop-color="#F4ECD6"/>
+      <stop offset="100%" stop-color="#DCD0B4"/>
+    </linearGradient>
+    <!-- Subtle highlight stripe on the shaft -->
+    <linearGradient id="shaftHi" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%"   stop-color="rgba(255,255,255,0)"/>
+      <stop offset="50%"  stop-color="rgba(255,255,255,.55)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="8"  y="0"   width="384" height="24"  rx="5" ry="5" fill="url(#slabG)"/>
+  <rect x="16" y="30"  width="368" height="18"  rx="3" ry="3" fill="url(#innerG)"/>
+  <rect x="24" y="54"  width="352" height="492" rx="2" ry="2" fill="url(#shaftG)"/>
+  <!-- soft vertical highlight down the shaft -->
+  <rect x="180" y="58" width="40"  height="484" fill="url(#shaftHi)" opacity=".5"/>
+  <rect x="16" y="552" width="368" height="18"  rx="3" ry="3" fill="url(#innerG)"/>
+  <rect x="8"  y="576" width="384" height="24"  rx="5" ry="5" fill="url(#slabG)"/>
+</svg>
