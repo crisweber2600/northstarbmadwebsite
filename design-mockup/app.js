@@ -60,138 +60,421 @@ sections.forEach(id => {
    PYRAMID — 10 tiers
 ================================================================ */
 const tierData = {
-  1:  { role:'Student',         tagline:'Every morning starts with Joey.',
-        body:'When students log in, Joey the Kangaroo greets them with a clear daily focus. NorthStar gives every student personalized pathways, daily managed-independent learning, and a portfolio that grows across PreK–8.',
-        workspace:'A friendly daily check-in, focus list, and progress dashboard.',
-        pathways:'Personalized learning aligned to each student\'s needs.',
-        coach:'Joey — a virtual learning guide and daily companion.',
-        features:[
-          'Friendly check-in and clear daily learning focus',
-          'Personalized pathways aligned to each student',
-          'Daily managed-independent learning matched to needs',
-          'Reflection, recognition, and growth celebrations',
-          'Standards-based portfolios across PreK–8'
-        ],
-        anchor:'Students don\'t need to manage the complexity. Joey helps make learning manageable and meaningful.' },
-  2:  { role:'Family',           tagline:'A clear window into how their child is growing.',
-        body:'Families get visibility into goals, simple ways to support learning at home, and clear progress snapshots — without needing to interpret jargon or chase teachers for updates.',
-        workspace:'A family dashboard with goals, progress, and gentle nudges.',
-        pathways:'Suggested at-home routines tied to current learning.',
-        coach:'A guide that helps their child stay organized and grow.',
-        features:[
-          'Visibility into goals and current learning',
-          'Simple, jargon-free progress snapshots',
-          'Suggested ways to support learning at home',
-          'Two-way communication with the classroom',
-          'Celebrations of growth and milestones'
-        ],
-        anchor:'Families become true partners — informed, included, and equipped to help.' },
-  3:  { role:'Teacher',          tagline:'Joey finds the patterns. Teachers drive the change.',
-        body:'Teachers get a role-based dashboard combining classroom tools, personalized professional learning, and a virtual systems coach — so the system handles organization while teachers focus on instruction.',
-        workspace:'Planning, differentiation, progress monitoring, and conferring guides.',
-        pathways:'Personalized micro-credentials tied to classroom practice.',
-        coach:'Just-in-time guidance and embedded video models.',
-        features:[
-          'Instructional planning, differentiation, and goal alignment',
-          'Embedded progress monitoring and evidence collection',
-          'Personalized micro-credentials tied to classroom practice',
-          'Just-in-time guidance from the virtual systems coach',
-          'Real classroom video — built right in'
-        ],
-        anchor:'NorthStar fits into the flow of teaching rather than pulling teachers away from it.' },
-  4:  { role:'Interventionist', tagline:'Evidence-based intervention, built into the system.',
-        body:'Interventionists work alongside teachers with shared evidence, Joey-analyzed artifacts, and a complete science-of-reading–aligned written code continuum — so intervention is guided by evidence, not guesswork.',
-        workspace:'Caseload, intervention plans, and progress monitoring tools.',
-        pathways:'Diagnostic-aligned intervention pathways and resources.',
-        coach:'Just-in-time intervention guidance from the virtual coach.',
-        features:[
-          'Caseload management with shared evidence across roles',
-          'Joey-analyzed daily artifacts linked to standards',
-          'PreK–8 vertically aligned written-code continuum',
-          'Phonics, morphology, syntax, and vocabulary games',
-          'Know-Need-Teach-Check planning sheets'
-        ],
-        anchor:'Intervention becomes precise, coherent, and connected to classroom instruction.' },
-  5:  { role:'Coach',   tagline:'Coaching cycles, observation, and feedback — in one place.',
-        body:'Building coaches get coaching-cycle workflows, observation tools, and trend insights so they can focus on people and practice while NorthStar handles organization.',
-        workspace:'Coaching-cycle dashboard, schedule, and observation tools.',
-        pathways:'Coaching micro-credentials and shared learning libraries.',
-        coach:'Trend insights and recommended next actions for each teacher.',
-        features:[
-          'Coaching cycles, observation, and feedback workflows',
-          'Trend insights aggregated across teachers and classrooms',
-          'Embedded video for evidence and modeling',
-          'Aligned focus across coaches, interventionists, and teachers',
-          'Goal alignment to building priorities'
-        ],
-        anchor:'Coaches focus on people and practice; NorthStar carries the rest.' },
-  6:  { role:'School Leadership Team',
-        tagline:'A shared dashboard for shared improvement.',
-        body:'School improvement teams get a shared dashboard where Joey aggregates classroom evidence into school-wide insight — patterns, not isolated examples — so conversations stay focused on instruction and learning.',
-        workspace:'Interactive school improvement plan and team meeting hub.',
-        pathways:'Team-based learning and shared improvement playbooks.',
-        coach:'System-level recommendations for the team\'s next move.',
-        features:[
-          'Grade-level and team-level learning trends',
-          'Visibility into instructional implementation',
-          'Progress toward shared improvement goals',
-          'Interactive continuous-improvement plans',
-          'Coaching, micro-credential, and evidence cycle activity'
-        ],
-        anchor:'Leadership conversations become focused, collaborative, and grounded in evidence.' },
-  7:  { role:'School Admin', tagline:'See the building. Lead the building.',
-        body:'Principals get a strategic dashboard that turns daily classroom activity into actionable building-level insight — implementation, learning trends, and where support is needed.',
-        workspace:'Building dashboard with implementation and learning insight.',
-        pathways:'Leadership micro-credentials and routines.',
-        coach:'Targeted next-best-action prompts for the building.',
-        features:[
-          'Building-wide learning trends and implementation insight',
-          'Targeted, wrap-around coaching and resource alignment',
-          'Goal alignment to district priorities',
-          'Continuity across leadership transitions',
-          'Insight without micromanagement'
-        ],
-        anchor:'Lead with insight — not compliance, not control.' },
-  8:  { role:'District Coach',     tagline:'Coach across schools, with shared evidence.',
-        body:'District coaches see across buildings — coaching-cycle activity, micro-credential progress, and patterns of practice — so cross-school coherence becomes possible without losing local context.',
-        workspace:'Cross-building coaching dashboard and trend views.',
-        pathways:'Cross-school learning libraries and coaching playbooks.',
-        coach:'Pattern-spotting across buildings and grade levels.',
-        features:[
-          'Cross-building coaching-cycle visibility',
-          'Pattern-spotting across grade levels and schools',
-          'Shared video and resource libraries',
-          'Aligned support for new initiatives',
-          'Coherent coaching practice across the district'
-        ],
-        anchor:'District coaching becomes coherent — not duplicative, not isolated.' },
-  9:  { role:'District Leadership Team',
-        tagline:'Joey organizes the learning. The team guides the improvement.',
-        body:'District improvement teams get an aggregated view of system health and improvement progress, anchored in real classroom evidence — so improvement plans live and breathe instead of sitting in a binder.',
-        workspace:'District improvement plan and shared team workspace.',
-        pathways:'Cross-role learning around district priorities.',
-        coach:'Recommended next moves for the system.',
-        features:[
-          'Aggregated implementation, learning, and capacity data',
-          'Interactive district continuous improvement plan',
-          'Alignment across schools, roles, and initiatives',
-          'Visibility without surveillance',
-          'Continuity across leadership transitions'
-        ],
-        anchor:'Improvement plans become living systems, not static documents.' },
-  10: { role:'District Admin',      tagline:'Insight without micromanagement.',
-        body:'District administrators get a strategic dashboard where Joey turns daily classroom activity into actionable system-level insight — board-ready reporting, system health, and how growth is progressing across schools.',
-        workspace:'District dashboard, board reports, and system signals.',
-        pathways:'Leadership development and continuity planning.',
-        coach:'System-level signals and recommended priorities.',
-        features:[
-          'School- and district-wide learning trends',
-          'Implementation progress by school, role, or initiative',
-          'Goal alignment to district priorities',
-          'Targeted, wrap-around support and resource alignment',
-          'Board-ready reporting on system health and outcomes'
-        ],
-        anchor:'Lead the system with clarity, coherence, and care.' }
+  1: {
+    role:'Student',
+    tagline:'Goals, learning plan, reflection, and a daily guide.',
+    workspace:{
+      title:'Workspace Dashboard',
+      bullets:[
+        'System generated daily individual learning plans and seatwork generated by system',
+        'Daily learning map checklist so students always know what to work on next',
+        'Portfolio for learning artifacts, system-analyzed, daily interventions and seat work assigned by system',
+        'Goal planning and progress check-ins with badges and tokens that recognize effort and persistence',
+        'Digital reader\'s, writer\'s, math, and science notebooks',
+        'Multi-level e-book library for every unit, daily reading assigned and analyzed by system'
+      ]
+    },
+    pathways:{
+      title:'Learning Pathways',
+      subtitle:'Learning that fits each child.',
+      bullets:[
+        'Personalized reading and writing practice',
+        'Science-of-reading systematic sequential word-study system (phonics, grammar, vocabulary) matched to needs',
+        'App to record daily reading for system analysis, comprehending conversation with Joey (running record and analysis sent to teacher)',
+        'Targeted support during workshop time',
+        'Skills applied across subjects'
+      ]
+    },
+    coach:{
+      title:'Virtual Coach',
+      subtitle:'Joey — a friendly guide who supports focus and confidence.',
+      bullets:[
+        'Daily greeting and learning focus',
+        'Step-by-step guidance through tasks',
+        'Helps students understand what to focus on next',
+        'Encourages goal setting and reflection',
+        'Prompts productive learning habits',
+        'Supports independence and responsibility',
+        'Builds confidence over time',
+        'Joey-guided learning games',
+        'Celebration of progress'
+      ]
+    }
+  },
+  2: {
+    role:'Family',
+    tagline:'Visibility, shared goals, and actionable ways to support learning.',
+    workspace:{
+      title:'Workspace Dashboard',
+      intro:'Dashboard provides a simple, organized view of a child\'s learning and support. Examples include:',
+      bullets:[
+        '<strong>Learning Overview</strong> — what students are learning and why it matters. Learning that builds, not resets',
+        '<strong>Standards-Based Progress Views</strong> — growth over time, not just grades',
+        '<strong>Student Portfolio Access</strong> — artifacts that show learning across years',
+        '<strong>School Communications</strong> — messages and updates from the school',
+        '<strong>Teacher &amp; Student Messaging</strong> — easy, appropriate communication'
+      ]
+    },
+    pathways:{
+      title:'Learning Pathways',
+      intro:'NorthStar includes a family learning system that offers short, practical learning experiences such as:',
+      bullets:[
+        '<strong>Understanding developmental milestones (PreK–6)</strong>',
+        '<strong>Getting ready for middle school</strong>',
+        '<strong>Setting your child up for homework success</strong>'
+      ],
+      outro:'These learning pathways help families understand how children learn and how to provide meaningful support at home — without pressure or blame.'
+    },
+    coach:{
+      title:'Virtual Coach',
+      subtitle:'Guidance at home — without guesswork.',
+      intro:'NorthStar provides a <strong>virtual homework coach</strong> to support families during homework and independent learning time. The coach:',
+      bullets:[
+        'offers prompts and guidance',
+        'helps families know how to help without reteaching',
+        'supports routines, focus, and self-regulation'
+      ],
+      outro:'Families can support learning confidently — without needing to be content experts.'
+    }
+  },
+  3: {
+    role:'Teacher',
+    tagline:'Classroom workflows + personalized growth + embedded tools.',
+    workspace:{
+      title:'Workspace Dashboard',
+      subtitle:'<strong>Tool groupings include:</strong>',
+      bullets:[
+        '<strong>Instructional Planning:</strong> lesson planning, differentiation supports, goal alignment, report cards',
+        '<strong>Instructional Tools:</strong> full curriculum, learning tools & e-book library, conferring app',
+        '<strong>Student Learning &amp; Progress:</strong> learning targets, progress monitoring, evidence collection',
+        '<strong>Classroom Routine Tools:</strong> daily workflows, check-ins, reflection prompts',
+        '<strong>Intervention &amp; Support Tools:</strong> documentation, collaboration with interventionists and coaches',
+        '<strong>Communication &amp; Collaboration Tools:</strong> shared goals, notes, and aligned expectations'
+      ]
+    },
+    pathways:{
+      title:'Learning Pathways',
+      subtitle:'<strong>Micro-credentialing system</strong> Professional learning connected to student need.',
+      bullets:[
+        'PLC planning and goal-setting aligned to classroom practice and school priorities',
+        'Begins with a <strong>self-assessment or needs assessment</strong>',
+        'Asynchronous learning modules; generates certificates of learning used for license renewal',
+        'Allows teachers to <strong>demonstrate learning through real classroom evidence</strong> reflection and growth',
+        'Badges and certifications stored in a professional portfolio',
+        'Supports <strong>continuous improvement</strong>, not one-and-done training'
+      ]
+    },
+    coach:{
+      title:'Virtual Coach',
+      subtitle:'<strong>Virtual Systems Coach — Guide the Work</strong>',
+      intro:'Every teacher has access to a <strong>virtual coach</strong> that helps navigate the day.<br/><br/>The coach:',
+      bullets:[
+        'Guides you through tools and routines at the right moment',
+        'Surfaces next-step instructional guidance',
+        'Helps translate professional learning into classroom action',
+        'Supports consistency without micromanagement',
+        'Reduces guesswork by clarifying "what matters most right now"',
+        'Organizes daily learning artifacts',
+        'Analyzes strengths and needs'
+      ]
+    }
+  },
+  4: {
+    role:'Interventionist',
+    tagline:'Progress monitoring, targeted supports, efficiency tools.',
+    workspace:{
+      title:'Workspace Dashboard',
+      bullets:[
+        'Intervention dashboard with student focus areas',
+        'Team-meeting system app that guides intervention planning and automatically generates intervention schedules',
+        'Targeted skill-based interventions',
+        'NorthStar analyzes daily learning artifacts and generates interventions aligned to student needs and classroom instruction',
+        'System generated student intervention profiles shared with classroom teacher and interventionist to align instruction movement between tiers as needs change'
+      ]
+    },
+    pathways:{
+      title:'Learning Pathways',
+      bullets:[
+        'Micro-credentialing system',
+        'PLC planning and goal-setting that guides teachers through',
+        'Asynchronous learning modules generates certificates of learning used for license renewal',
+        'Evidence-based intervention learning',
+        'Real intervention artifacts',
+        'Reflection and growth portfolios'
+      ]
+    },
+    coach:{
+      title:'Virtual Coach',
+      intro:'Every teacher has access to a <strong>virtual systems coach</strong> that helps navigate the day.<br/><br/>The coach:',
+      bullets:[
+        'Guides you through tools and routines at the right moment',
+        'Prompts reflection and next steps aligned to your goals',
+        'Helps translate professional learning into classroom action',
+        'Supports consistency without micromanagement',
+        'Reduces guesswork by clarifying &ldquo;what matters most right now&rdquo;'
+      ],
+      outro:'Think of it as a steady, supportive presence — not another evaluator.'
+    }
+  },
+  5: {
+    role:'Coach',
+    tagline:'Coaching tools, micro-credentials, and day-to-day guidance.',
+    workspace:{
+      title:'Workspace Dashboard',
+      subtitle:'<strong>Coach Dashboard &amp; Instructional Insight Tools</strong>',
+      bullets:[
+        'Instructional pattern views',
+        'Coaching cycle tools',
+        'Classroom video library',
+        'Teacher learning and application views',
+        'Paperless coaching logs',
+        'classroom-level and grade-level learning trends',
+        'visibility into instructional patterns',
+        'coaching cycle documentation',
+        'alignment to instructional priorities and standards',
+        'progress tracking over time'
+      ],
+      outro:'Everything is connected — reducing fragmentation and guesswork.'
+    },
+    pathways:{
+      title:'Learning Pathways',
+      bullets:[
+        'Micro-Credentialling system',
+        'Coaching-focused learning',
+        'Real coaching artifacts',
+        'Reflection and professional portfolios',
+        'Coaching videos'
+      ]
+    },
+    coach:{
+      title:'Virtual Coach',
+      subtitle:'<strong>JOEY&rsquo;S ROLE FOR COACHES</strong><br/><em><strong>From Data to Direction</strong></em>',
+      intro:'For coaches, Joey is the engine that turns daily learning into <strong>actionable coaching insight</strong>.<br/><br/>Joey:',
+      bullets:[
+        'analyzes student learning evidence across classrooms',
+        'identifies patterns of strength and need over time',
+        'connects student outcomes to instructional practices',
+        'organizes insights by teacher, grade level, and standard',
+        'highlights where coaching support will have the greatest impact'
+      ],
+      outro:'Joey does the heavy analytical work — <strong>coaches use their expertise to respond</strong>.'
+    }
+  },
+  6: {
+    role:'School Leadership Team',
+    tagline:'Improvement planning, shared goals, and progress visibility.',
+    workspace:{
+      title:'Workspace Dashboard',
+      subtitle:'<strong>School Leadership Dashboard &amp; Team Tools</strong>',
+      bullets:[
+        'School-wide learning views',
+        'Grade-level and PLC reports',
+        'Leadership meeting tools',
+        'Implementation growth indicators',
+        'Barrier and enabler analysis'
+      ],
+      subtitle2:'<strong>2. Aligned Improvement Pathways</strong>',
+      bullets2:[
+        'Building continuous improvement plans',
+        'Needs assessments',
+        'Focused goals and action plans',
+        'Guided meeting routines'
+      ]
+    },
+    pathways:{
+      title:'Learning Pathways',
+      subtitle:'<strong>Micro-Credentialing System</strong>',
+      intro:'School leadership teams are supported through:',
+      bullets:[
+        'role-specific onboarding',
+        'Collective leadership learning',
+        'Shared artifacts and reflection',
+        'Team leadership portfolios'
+      ]
+    },
+    coach:{
+      title:'Virtual Coach',
+      intro:'For school leadership teams, Joey is the system intelligence that turns day-to-day learning into <strong>school-level clarity</strong>.<br/><br/>Joey:',
+      bullets:[
+        'aggregates student learning evidence across classrooms',
+        'analyzes patterns of instructional practice and outcomes',
+        'connects classroom learning to school goals and priorities',
+        'organizes evidence by grade level, team, and standard',
+        'highlights where support, coaching, or adjustment is needed'
+      ],
+      outro:'Joey surfaces insight — <strong>leadership teams decide how to respond</strong>.'
+    }
+  },
+  7: {
+    role:'School Admin',
+    tagline:'Implementation, usage, and outcomes visibility.',
+    workspace:{
+      title:'Workspace Dashboard',
+      subtitle:'<strong>Principal Dashboard &amp; System Insight Tools</strong>',
+      bullets:[
+        'School-wide learning views',
+        'Implementation growth indicators',
+        'PLC and team reports',
+        'Intervention and support views',
+        'Leadership reflection tools'
+      ],
+      subtitle2:'<strong>Aligned Instructional &amp; Improvement Pathways</strong>',
+      bullets2:[
+        'Interactive building continuous improvement plans',
+        'Meeting agendas and action plans',
+        'PLC and coaching alignment'
+      ]
+    },
+    pathways:{
+      title:'Learning Pathways',
+      subtitle:'<strong>Micro-Credentialing System</strong>',
+      bullets:[
+        'Needs Assessment and goal setting',
+        'Leadership learning aligned to school goals',
+        'Real leadership artifacts',
+        'Reflection and leadership portfolios'
+      ]
+    },
+    coach:{
+      title:'Virtual Coach',
+      subtitle:'<strong>Virtual Systems Coach (Joey)</strong>',
+      bullets:[
+        'Analyzes instructional patterns',
+        'Highlights growth trends'
+      ],
+      outro:'Supports leadership conversations'
+    }
+  },
+  8: {
+    role:'District Coach',
+    tagline:'Scale coaching, fidelity support, trend insights.',
+    workspace:{
+      title:'Workspace Dashboard',
+      subtitle:'<strong>District Coach Dashboard &amp; Cross-School Insight Tools</strong><br/>A clear view across classrooms, schools, and coaching efforts.',
+      intro:'The district coach dashboard provides insight into instructional patterns across buildings. Examples include:',
+      bullets:[
+        '<strong>Cross-School Instructional Pattern Views</strong> – trends in learning and practice',
+        '<strong>School-Level Coaching Focus Areas</strong> – where support is most needed',
+        '<strong>Coach &amp; Building Dashboards</strong> – visibility into what school teams are seeing',
+        '<strong>Implementation Growth Indicators</strong> – how practices are developing over time'
+      ]
+    },
+    pathways:{
+      title:'Learning Pathways',
+      subtitle:'<strong>Micro-Credentialing System</strong><br/>Professional learning that builds coaching expertise at scale.',
+      intro:'NorthStar\'s micro-credentialing system supports district coaches in strengthening coaching practice across the system. Micro-credentials:',
+      bullets:[
+        'focus on coaching leadership and instructional capacity building',
+        'align to district improvement priorities',
+        'use real coaching artifacts and reflections as evidence',
+        'are completed asynchronously within the flow of work'
+      ]
+    },
+    coach:{
+      title:'Virtual Coach',
+      intro:'District virtual coach:',
+      bullets:[
+        'build shared schema across coaches and schools',
+        'align theory, practice, and systems',
+        'document growth in a district coaching portfolio'
+      ]
+    }
+  },
+  9: {
+    role:'District Leadership Team',
+    tagline:'Strategic monitoring, resource alignment, reporting.',
+    workspace:{
+      title:'Workspace Dashboard',
+      subtitle:'<strong>Organize tools into categories like:</strong>',
+      bullets:[
+        '<strong>System Health:</strong> adoption, active use, routine consistency',
+        '<strong>Implementation &amp; Fidelity:</strong> where it\'s happening, where it\'s stuck',
+        '<strong>Capacity Building:</strong> micro-credential progress by role/school',
+        '<strong>Coaching &amp; Support:</strong> coaching cycles, support requests, trend patterns',
+        '<strong>Reporting:</strong> aligned roll-ups for leadership teams and board-ready summaries'
+      ],
+      subtitle2:'<strong>Dashboard &amp; System Insight Tools</strong>',
+      bullets2:[
+        'District-wide learning and growth views',
+        'Implementation indicators',
+        'Role-level dashboards',
+        'Equity and priority focus views',
+        'Leadership reflection tools'
+      ]
+    },
+    pathways:{
+      title:'Learning Pathways',
+      intro:'Micro credentials for district leadership, aligned to district priorities:',
+      bullets:[
+        'Needs/self assessment → goals → personalized learning plan',
+        'Evidence-based completion (artifacts that reflect actual work)',
+        'Continuous improvement cycles (not one-and-done training)'
+      ]
+    },
+    coach:{
+      title:'Virtual Coach',
+      intro:'Guidance that helps leaders:',
+      bullets:[
+        'District launch + alignment session',
+        'Role-based onboarding plan',
+        'Pilot-to-scale roadmap',
+        'Communication templates and routines',
+        'follow consistent routines (weekly/monthly/quarterly cadences)',
+        'interpret what the system is telling them',
+        'select next best actions (support, coaching, resourcing, communication)',
+        'Analyzes district-wide patterns',
+        'Highlights achievement gaps',
+        'Supports wrap-around coaching decisions',
+        'Equity and priority focus views',
+        'Leadership reflection tools'
+      ]
+    }
+  },
+  10: {
+    role:'District Admin',
+    tagline:'System health, alignment, implementation visibility, and support targeting.',
+    workspace:{
+      title:'Workspace Dashboard',
+      bullets:[
+        '<strong>Tools</strong> (embedded workflows that make the job easier)'
+      ],
+      body:'A centralized workspace designed for instructional leadership and implementation.',
+      subtitle2:'<strong>The dashboard provides:</strong>',
+      bullets2:[
+        'school-wide learning trends',
+        'instructional implementation indicators',
+        'visibility into coaching and professional learning',
+        'progress toward school goals',
+        'alignment to standards and district priorities'
+      ],
+      outro:'Everything is organized into <strong>clear signals</strong>, not disconnected data points.'
+    },
+    pathways:{
+      title:'Learning Pathways',
+      bullets:[
+        'Adults get micro-credentials that start with needs, set goals, deliver PD, and measure evidence.'
+      ],
+      subtitle2:'<strong>— Supporting Leadership Routines</strong>',
+      intro2:'NorthStar\'s virtual systems coach supports school administrators by:',
+      bullets2:[
+        'reinforcing consistent leadership routines',
+        'helping interpret system-level insights',
+        'prompting reflection and next steps',
+        'supporting alignment across roles'
+      ],
+      outro:'The coach helps administrators stay focused on what matters most — learning and instruction.'
+    },
+    coach:{
+      title:'Virtual Coach',
+      intro:'For school administrators, Joey is the system intelligence that turns daily classroom activity into <strong>actionable school-level insight</strong>.<br/><br/>Joey:',
+      bullets:[
+        'aggregates assessment and learning evidence across classrooms',
+        'analyzes instructional and learning patterns over time',
+        'connects student outcomes to instructional practices',
+        'organizes evidence by grade, team, role, and standard'
+      ]
+    }
+  }
 };
 
 /* Rainbow tier colors top→bottom (matches reference pyramid art) */
@@ -296,29 +579,36 @@ function openTier(t){
   const node = document.querySelector(`.layer[data-layer="${t}"]`);
   if (node) node.classList.add('active');
 
+  const renderBullets = (bullets) => bullets && bullets.length
+    ? `<ul class="tp-list">${bullets.map(b => `<li><span class="tp-bullet-text">${b}</span></li>`).join('')}</ul>`
+    : '';
+  const renderCol = (col) => `
+    <div class="tp-col">
+      <h4 class="tp-col-title">${col.title}</h4>
+      ${col.subtitle ? `<p class="tp-col-sub">${col.subtitle}</p>` : ''}
+      ${col.intro ? `<p class="tp-col-intro">${col.intro}</p>` : ''}
+      ${renderBullets(col.bullets)}
+      ${col.body ? `<p class="tp-col-intro">${col.body}</p>` : ''}
+      ${col.subtitle2 ? `<p class="tp-col-sub tp-col-sub-2">${col.subtitle2}</p>` : ''}
+      ${col.intro2 ? `<p class="tp-col-intro">${col.intro2}</p>` : ''}
+      ${renderBullets(col.bullets2)}
+      ${col.outro ? `<p class="tp-col-outro">${col.outro}</p>` : ''}
+    </div>
+  `;
+
+  tierBody.style.setProperty('--tier-color', tierColors[t-1]);
   tierBody.innerHTML = `
     <button class="close" aria-label="Close">×</button>
-    <div class="panel-grid">
-      <div class="left">
-        <div class="inner">
-          <span class="tier-num">Tier ${t} of 10</span>
-          <h2 class="tier-title">${d.role}</h2>
-          <p class="tier-tag">${d.tagline}</p>
-          <p class="tier-body">${d.body}</p>
-          <div class="pillar-set">
-            <div class="ps"><strong>${d.role} Workspace</strong><span>${d.workspace}</span></div>
-            <div class="ps"><strong>${d.role} Pathways</strong><span>${d.pathways}</span></div>
-            <div class="ps"><strong>${d.role} Coach — Joey</strong><span>${d.coach}</span></div>
-          </div>
-        </div>
+    <div class="tier-panel-inner">
+      <div class="tier-head">
+        <span class="tier-num">Tier ${t} of 10</span>
+        <h2 class="tier-title">${d.role} <span class="tier-title-suffix">— Pillars of Support</span></h2>
+        <p class="tier-tag">${d.tagline}</p>
       </div>
-      <div class="right">
-        <h3>Pillars of Support</h3>
-        <p class="right-sub">What this role gets in NorthStar</p>
-        <ul class="feature-list">
-          ${d.features.map(f => `<li>${f}</li>`).join('')}
-        </ul>
-        <div class="anchor-quote">${d.anchor}</div>
+      <div class="three-pillars">
+        ${renderCol(d.workspace)}
+        ${renderCol(d.pathways)}
+        ${renderCol(d.coach)}
       </div>
     </div>
   `;
