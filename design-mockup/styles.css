@@ -193,7 +193,7 @@ nav.top .container{
 .hero-banner .eyebrow::before{display:none}
 .hero-banner .eyebrow{display:inline-block; padding-left:0}
 .hero-banner h1{
-  margin:18px 0 24px;
+  margin:18px 0 56px;
   letter-spacing:-0.03em;
 }
 .hero-banner h1 em{
@@ -201,7 +201,7 @@ nav.top .container{
   font-variation-settings:"opsz" 144, "SOFT" 100;
 }
 .hero-banner .lede{
-  font-size:1.5rem; line-height:1.55;
+  font-size:1.7rem; line-height:1.55;
   color:#2C4763; max-width:78ch;
   margin:0 auto 38px;
 }
@@ -890,10 +890,10 @@ nav.top .container{
 .pyramid-credit{
   width:100%;
   max-width:560px;
-  margin:10px auto 0;
+  margin:14px auto 0;
   text-align:center;
   font-family:'Manrope', system-ui, sans-serif;
-  font-size:.7rem;
+  font-size:.95rem;
   color:#7A8FA4;
   font-style:normal;
   letter-spacing:.02em;
@@ -981,12 +981,21 @@ nav.top .container{
   background:rgba(7,24,46,.6);
   backdrop-filter:blur(6px);
   -webkit-backdrop-filter:blur(6px);
-  display:none; align-items:center; justify-content:center;
+  display:flex; align-items:center; justify-content:center;
   padding:30px;
   opacity:0;
-  transition:opacity .3s ease;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .4s cubic-bezier(.2,.8,.2,1),
+             visibility 0s linear .4s;
 }
-.tier-modal.open{ display:flex; opacity:1; }
+.tier-modal.open{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transition:opacity .4s cubic-bezier(.2,.8,.2,1),
+             visibility 0s linear 0s;
+}
 .tier-modal .panel{
   background:var(--cream);
   border-radius:var(--r-lg);
@@ -994,10 +1003,15 @@ nav.top .container{
   max-height:90vh; overflow:auto;
   position:relative;
   box-shadow:var(--shadow-lg);
-  transform:translateY(20px);
-  transition:transform .35s ease;
+  transform:translateY(28px) scale(.96);
+  opacity:0;
+  transition:transform .5s cubic-bezier(.2,.8,.2,1),
+             opacity .35s ease-out;
 }
-.tier-modal.open .panel{ transform:translateY(0); }
+.tier-modal.open .panel{
+  transform:translateY(0) scale(1);
+  opacity:1;
+}
 .tier-modal .close{
   position:absolute; top:18px; right:18px;
   width:48px; height:48px; border-radius:50%;
@@ -1354,12 +1368,21 @@ nav.top .container{
   background:rgba(7,24,46,.6);
   backdrop-filter:blur(6px);
   -webkit-backdrop-filter:blur(6px);
-  display:none; align-items:center; justify-content:center;
+  display:flex; align-items:center; justify-content:center;
   padding:30px;
   opacity:0;
-  transition:opacity .3s ease;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .4s cubic-bezier(.2,.8,.2,1),
+             visibility 0s linear .4s;
 }
-.info-modal.open{ display:flex; opacity:1; }
+.info-modal.open{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transition:opacity .4s cubic-bezier(.2,.8,.2,1),
+             visibility 0s linear 0s;
+}
 .info-modal .panel{
   background:var(--cream);
   border-radius:var(--r-lg);
@@ -1368,10 +1391,15 @@ nav.top .container{
   position:relative;
   box-shadow:var(--shadow-lg);
   padding:50px 50px 40px;
-  transform:translateY(20px);
-  transition:transform .35s ease;
+  transform:translateY(28px) scale(.96);
+  opacity:0;
+  transition:transform .5s cubic-bezier(.2,.8,.2,1),
+             opacity .35s ease-out;
 }
-.info-modal.open .panel{ transform:translateY(0); }
+.info-modal.open .panel{
+  transform:translateY(0) scale(1);
+  opacity:1;
+}
 .info-modal .close{
   position:absolute; top:18px; right:18px;
   width:48px; height:48px; border-radius:50%;
