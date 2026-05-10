@@ -46,7 +46,7 @@
 <header class="hero" id="hero" data-screen-label="02 Landing">
   <div class="hero-banner reveal">
     <span class="eyebrow">An Educational Operating System</span>
-    <h1 style="font-family: Georgia; font-size: 88px">One platform for <em>every layer</em><br/>of learning — students to leadership.</h1>
+    <h1 style="font-family: Georgia; font-size: 88px; color: var(--navy)">One platform.<br/><em style="color: var(--gold)">Many roles.</em><br/>One coherent system.</h1>
     <p class="lede">NorthStarET gives every audience — students, families, teachers, coaches, school leaders, and district leaders — a role-based dashboard with the tools, learning pathways, and guided support they need to take the next best step. A coherent system that scales without adding noise.</p>
     <div class="hero-ctas">
 
@@ -55,33 +55,14 @@
 
   <div class="container">
     <div class="beacon reveal reveal-delay-1">
-      <div class="beacon-stage">
-        <div class="beacon-rings"></div>
-        <svg class="beacon-rays" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <linearGradient id="rayGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#1B4F8C" stop-opacity="0"/>
-              <stop offset="50%" stop-color="#1B4F8C" stop-opacity=".6"/>
-              <stop offset="100%" stop-color="#C9A961" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <g transform="translate(300,300)">
-            <line x1="0" y1="-280" x2="0" y2="-150"/>
-            <line x1="0" y1="280" x2="0" y2="150"/>
-            <line x1="-280" y1="0" x2="-150" y2="0"/>
-            <line x1="280" y1="0" x2="150" y2="0"/>
-            <line x1="-200" y1="-200" x2="-110" y2="-110"/>
-            <line x1="200" y1="-200" x2="110" y2="-110"/>
-            <line x1="-200" y1="200" x2="-110" y2="110"/>
-            <line x1="200" y1="200" x2="110" y2="110"/>
-          </g>
-        </svg>
-        <img class="beacon-logo" src="assets/northstar-logo.png" alt="" />
-      </div>
-
-      <div class="beacon-tagline">
-        <span class="designed-for">Designed for</span>
-        <h2><span class="accent" style="font-family: Georgia">System-wide<br/>coherence</span></h2>
+      <div class="beacon-card">
+        <div class="beacon-visual">
+          <img class="beacon-visual-img" src="assets/hand-bulb.png" alt="A hand holding a glowing lightbulb surrounded by a network of light"/>
+        </div>
+        <div class="beacon-side">
+          <img class="beacon-side-logo" src="assets/northstar-logo.png" alt="NorthStar Educational Tools"/>
+          <p class="beacon-tagline-text">From student needs to adult learning to system growth.</p>
+        </div>
       </div>
 
       <div class="beacon-pillars">
@@ -210,13 +191,15 @@ expressed through a dashboard built for their day-to-day work.</p>
         <p style="font-family: Manrope; font-size: 24px; color: rgb(213, 226, 238); font-weight: 700; margin: 0px 0px 33px">Joey is the learning intelligence within NorthStar. <span style="color: var(--olive-soft)">Joey administers individualized assessments, analyzes daily learning artifacts, identifies patterns of strength and need, aligns evidence to standards, and organizes insights into clear instructional guidance.</span></p>
         <p style="font-size: 23px; font-family: Manrope; font-weight: 700; margin: 0px 0px 17px; padding: 0px 0px 10px">For students, Joey is a daily learning guide. For educators, Joey is the assessment and analysis engine that protects teacher time and improves instructional precision — translating professional learning into practice with guiding support.</p>
 
-        <div class="joey-roles">
-          <div class="joey-role" style="font-weight: 600; opacity: 1"><div class="joey-role-label" style="font-size: 19px; font-family: Georgia">For Students</div><div class="joey-role-desc" style="font-weight: 600; font-size: 19px">A learning guide and daily companion.</div></div>
-          <div class="joey-role"><div class="joey-role-label" style="font-size: 20px; font-family: Georgia">For Families</div><div class="joey-role-desc" style="font-weight: 600; font-size: 19px">A guide that helps their child stay organized and grow.</div></div>
-          <div class="joey-role"><div class="joey-role-label" style="font-size: 20px">For Teachers</div><div class="joey-role-desc" style="font-weight: 600; font-size: 19px">Assessment + analysis support that saves time and sharpens precision.</div></div>
-          <div class="joey-role"><div class="joey-role-label" style="font-size: 20px">For Coaches</div><div class="joey-role-desc" style="font-weight: 600; font-size: 18px">An insight generator that informs every coaching cycle.</div></div>
-          <div class="joey-role"><div class="joey-role-label" style="font-size: 20px">For Leadership</div><div class="joey-role-desc" style="font-weight: 600; font-size: 19px">System-level learning intelligence — insight without micromanagement.</div></div>
-        </div>
+        <table class="joey-roles-table">
+          <tbody>
+            <tr><th scope="row">For Students</th><td>A learning guide and daily companion.</td></tr>
+            <tr><th scope="row">For Families</th><td>A guide that helps their child stay organized and grow.</td></tr>
+            <tr><th scope="row">For Teachers</th><td>Assessment + analysis support that saves time and sharpens precision.</td></tr>
+            <tr><th scope="row">For Coaches</th><td>An insight generator that informs every coaching cycle.</td></tr>
+            <tr><th scope="row">For Leadership</th><td>System-level learning intelligence — insight without micromanagement.</td></tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="joey-character reveal reveal-delay-1">
@@ -284,16 +267,18 @@ expressed through a dashboard built for their day-to-day work.</p>
 
     <div class="pyramid-layout">
       <div class="pyramid-stage reveal">
-        <svg id="pyramidSvg" class="pyramid-svg" viewBox="0 0 560 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ten-tier support pyramid">
+        <svg id="pyramidSvg" class="pyramid-svg" viewBox="0 0 560 575" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ten-tier support pyramid">
           <g id="layers"></g>
         </svg>
+        <div class="pyramid-foundation">NorthStar Educational Tools</div>
+        <p class="pyramid-credit">Pyramid concept © Beth Swenson 2020</p>
       </div>
 
-      <div class="pyramid-overview reveal reveal-delay-1" style="padding-top:0">
-        <p class="serif" style="font-style: italic; font-size: 40px; color: var(--royal); margin: 0 0 22px; line-height: 1.3; font-family: Georgia; font-weight: 800">Where every learner finds their North Star.</p>
+      <div class="pyramid-overview reveal reveal-delay-1" style="padding-top:60px">
+        <p class="serif" style="font-style: italic; font-size: 40px; color: var(--navy); margin: 0 0 56px; line-height: 1.3; font-family: Georgia; font-weight: 800">Where every learner finds their North Star.</p>
         <h3 style="font-family: Georgia">Every layer supports the student.</h3>
-        <p style="font-size: 20px">The North Star Student Support Structure is a ten-tier model that makes the system where every adult role exists to ensure students learn at high levels. </p>
-        <p style="font-size: 20px">Click on a tier to see who's involved, what they do, and how NorthStar supports them.</p>
+        <p style="font-size: 23px">The North Star System is a ten-tier model built around student success. Every adult role plays a critical part in helping students achieve at high levels, with each layer supporting and strengthening the next. NorthStar Educational Tools connects and empowers the entire system.</p>
+        <p style="font-size: 23px; color: var(--steel); font-weight: 600">Click on a tier to see who's involved, what they do, and how NorthStar supports them.</p>
       </div>
     </div>
   </div>
@@ -302,88 +287,26 @@ expressed through a dashboard built for their day-to-day work.</p>
 <!-- ============== IMPACT / PAGE 9 ============== -->
 <section class="impact" id="impact" data-screen-label="09 Impact">
   <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Impact</span>
-      <h2 style="font-family: Georgia">Outcomes that grow exponentially, year after year.</h2>
-      <p style="font-size: 25px">NorthStar surfaces system health in real time, while connecting daily practice to long-term student growth.</p>
-    </div>
-
     <div class="impact-grid">
-      <div class="reveal">
-        <h3 style="margin-bottom:14px; font-family: Georgia">Measure what matters: leading indicators <em class="serif" style="font-style:italic; color:var(--royal)">and</em> outcomes.</h3>
-        <p style="font-size: 23px">District leaders see what's being implemented, where support is needed, and how growth is progressing — without adding pressure to schools or classrooms. Insight without micromanagement.</p>
-        <div class="impact-stats">
-          <div class="stat">
-            <div class="stat-num">10</div>
-            <div class="stat-label">Distinct roles, one connected system</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">PreK–8</div>
-            <div class="stat-label">Vertically aligned curriculum included</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">1,000s</div>
-            <div class="stat-label">Classroom videos and leveled texts built in</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">∞</div>
-            <div class="stat-label">Continuous improvement, by design</div>
-          </div>
+      <div class="reveal impact-left">
+        <span class="eyebrow">Impact</span>
+        <h2 style="font-family: Georgia; margin-top:14px;">Measure what matters: leading indicators <em class="serif" style="font-style:italic; color:var(--royal)">and</em> outcomes.</h2>
+        <p style="font-size:23px; margin-top:18px;">NorthStar surfaces system health in real time, while connecting daily practice to long-term student growth. District leaders see what's being implemented, where support is needed, and how growth is progressing — without adding pressure to schools or classrooms.</p>
+
+        <div class="impact-cycle" aria-label="Innovation and Change Cycle">
+          <img class="cycle-bg" src="assets/cycle-wheel.png" alt="Innovation and Change Cycle"/>
         </div>
       </div>
 
-      <div class="reveal reveal-delay-1">
-        <div class="impact-cycle" aria-hidden="true">
-          <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="impactHub" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#1B4F8C"/>
-                <stop offset="100%" stop-color="#0E2A4A"/>
-              </radialGradient>
-            </defs>
-            <!-- 5 outcome rings -->
-            <g style="transform-origin:260px 260px; animation: spin 90s linear infinite">
-              <circle cx="260" cy="260" r="245" fill="none" stroke="#1B4F8C" stroke-opacity=".15" stroke-dasharray="3 9" stroke-width="1.4"/>
-            </g>
-            <g style="transform-origin:260px 260px; animation: spin 70s linear infinite reverse">
-              <circle cx="260" cy="260" r="200" fill="none" stroke="#A8C16A" stroke-opacity=".25" stroke-width="1.2"/>
-            </g>
-            <!-- Hub -->
-            <circle cx="260" cy="260" r="80" fill="url(#impactHub)" />
-            <text x="260" y="252" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" font-size="14" fill="#C9D8A1">the</text>
-            <text x="260" y="278" text-anchor="middle" font-family="Fraunces,serif" font-size="22" fill="#FAF6EE">student</text>
-            <!-- 5 outcome nodes -->
-            <g font-family="Manrope,sans-serif" font-size="13" font-weight="600" fill="#0E2A4A" text-anchor="middle">
-              <g><circle cx="260" cy="60"  r="44" fill="#FAF6EE" stroke="#1B4F8C" stroke-width="2"/><text x="260" y="56">Coherence</text><text x="260" y="74" font-size="10" fill="#54708F">aligned focus</text></g>
-              <g><circle cx="450" cy="180" r="44" fill="#FAF6EE" stroke="#1B4F8C" stroke-width="2"/><text x="450" y="176">Capacity</text><text x="450" y="194" font-size="10" fill="#54708F">adult growth</text></g>
-              <g><circle cx="395" cy="420" r="44" fill="#FAF6EE" stroke="#1B4F8C" stroke-width="2"/><text x="395" y="416">Ownership</text><text x="395" y="434" font-size="10" fill="#54708F">student voice</text></g>
-              <g><circle cx="125" cy="420" r="44" fill="#FAF6EE" stroke="#1B4F8C" stroke-width="2"/><text x="125" y="416">Insight</text><text x="125" y="434" font-size="10" fill="#54708F">real-time signal</text></g>
-              <g><circle cx="70"  cy="180" r="44" fill="#FAF6EE" stroke="#1B4F8C" stroke-width="2"/><text x="70" y="176">Sustained</text><text x="70" y="194" font-size="10" fill="#54708F">year over year</text></g>
-            </g>
-            <!-- Connecting curves -->
-            <g fill="none" stroke="#1B4F8C" stroke-width="1.5" stroke-opacity=".4" stroke-linecap="round">
-              <path d="M 297 76 A 200 200 0 0 1 432 145"/>
-              <path d="M 460 224 A 200 200 0 0 1 412 380"/>
-              <path d="M 358 437 A 200 200 0 0 1 162 437"/>
-              <path d="M 108 380 A 200 200 0 0 1 60 224"/>
-              <path d="M 88 145 A 200 200 0 0 1 223 76"/>
-            </g>
-            <!-- Inner spokes -->
-            <g stroke="#A8C16A" stroke-width="1.5" stroke-opacity=".5">
-              <line x1="260" y1="180" x2="260" y2="104"/>
-              <line x1="335" y1="220" x2="408" y2="190"/>
-              <line x1="320" y1="316" x2="370" y2="382"/>
-              <line x1="200" y1="316" x2="150" y2="382"/>
-              <line x1="185" y1="220" x2="112" y2="190"/>
-            </g>
-          </svg>
-        </div>
-
+      <div class="reveal reveal-delay-1 impact-right">
+        <h3 style="font-family: Georgia; margin-bottom:6px;">What changes in your district</h3>
+        <p class="impact-sub">Outcomes that grow exponentially year after year.</p>
         <ul class="outcomes-list">
           <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Stronger instructional coherence</strong><span>Aligned focus across teachers, coaches, interventionists, and leadership.</span></div></li>
           <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Higher adult capacity</strong><span>Job-embedded micro-credentials connect professional growth to student needs.</span></div></li>
           <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Greater student ownership</strong><span>Students understand their goals, see progress, and build learning habits.</span></div></li>
           <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Clearer system insight</strong><span>Leadership decisions grounded in real evidence, not assumptions.</span></div></li>
+          <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Sustained improvement</strong><span>Continuity across leadership transitions; long-term progress, not short-term fixes.</span></div></li>
         </ul>
       </div>
     </div>
@@ -434,8 +357,8 @@ expressed through a dashboard built for their day-to-day work.</p>
     </div>
 
     <div class="contact-bottom">
-      <span>© 2026 NorthStar Educational Tools. Pyramid concept © Beth Swenson 2020.</span>
-      <span>hello@northstaret.com  ·  Privacy  ·  Accessibility</span>
+      <span>© 2026 NorthStar Educational Tools</span>
+      <span>Privacy  ·  Accessibility</span>
     </div>
   </div>
 </section>
