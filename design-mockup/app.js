@@ -306,7 +306,7 @@ const tierData = {
     }
   },
   7: {
-    role:'School Admin',
+    role:'Principal',
     tagline:'Implementation, usage, and outcomes visibility.',
     workspace:{
       title:'Workspace Dashboard',
@@ -485,7 +485,7 @@ const tierColors = [
   '#B6D955', // 4 Interventionist - lime
   '#F4D247', // 5 Coach        - yellow
   '#F4B83D', // 6 School Leadership Team - gold
-  '#ED8E45', // 7 School Admin - orange
+  '#ED8E45', // 7 Principal - orange
   '#E66E4F', // 8 District Coach - red-orange
   '#D260A5', // 9 District Leadership Team - pink
   '#963E94'  // 10 District Admin - purple

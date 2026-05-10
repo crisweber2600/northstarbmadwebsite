@@ -902,6 +902,11 @@ nav.top .container{
   cursor:pointer;
   transition:filter .3s ease, transform .3s ease;
   transform-origin:center;
+  outline:none;
+}
+.pyramid-svg .layer:focus,
+.pyramid-svg .layer:focus-visible{
+  outline:none;
 }
 .pyramid-svg .layer:hover polygon,
 .pyramid-svg .layer:hover path{
@@ -910,8 +915,6 @@ nav.top .container{
 .pyramid-svg .layer.active polygon,
 .pyramid-svg .layer.active path{
   filter:brightness(1.18);
-  stroke:var(--ink-900);
-  stroke-width:2.5;
 }
 .pyramid-svg .layer text{
   pointer-events:none;
