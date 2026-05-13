@@ -79,7 +79,10 @@ p{color:#2C4763; max-width:65ch}
 }
 
 .container{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
-section{padding:clamp(80px, 9vw, 140px) 0; position:relative}
+section{padding:clamp(40px, 6vw, 90px) 0 clamp(80px, 9vw, 140px); position:relative}
+section[id]{
+  scroll-margin-top: -16px;
+}
 
 /* Buttons */
 .btn{
