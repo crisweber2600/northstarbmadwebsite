@@ -56,6 +56,74 @@ sections.forEach(id => {
   if (el) sectionIo.observe(el);
 });
 
+/* Joey welcome audio */
+const joeyVideo = document.querySelector('.joey-video');
+const joeyAudioFallback = document.querySelector('.joey-audio-fallback');
+
+if (joeyVideo && joeyAudioFallback) {
+  const idleLabel = "Play Joey's welcome";
+  let playAttemptId = 0;
+
+  const resetWelcome = ({label = idleLabel} = {}) => {
+    playAttemptId += 1;
+    joeyAudioFallback.disabled = false;
+    joeyAudioFallback.textContent = label;
+
+    try {
+      joeyVideo.pause();
+      joeyVideo.muted = true;
+      joeyVideo.loop = false;
+      joeyVideo.currentTime = 0;
+    } catch (error) {
+      console.warn(`Joey welcome reset failed: ${error?.name || 'UnknownError'}`);
+    }
+  };
+
+  const showPlaybackFailure = (error) => {
+    resetWelcome({label: "Unable to play — try again"});
+    console.warn(`Joey welcome playback failed: ${error?.name || 'UnknownError'}`);
+  };
+
+  const requestPlayback = () => {
+    try {
+      return Promise.resolve(joeyVideo.play());
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
+
+  joeyAudioFallback.addEventListener('click', () => {
+    const attemptId = ++playAttemptId;
+
+    try {
+      joeyVideo.loop = false;
+      joeyVideo.muted = false;
+      joeyVideo.currentTime = 0;
+    } catch (error) {
+      showPlaybackFailure(error);
+      return;
+    }
+
+    joeyAudioFallback.disabled = true;
+    joeyAudioFallback.textContent = "Playing Joey's welcome…";
+
+    requestPlayback().catch((error) => {
+      if (attemptId !== playAttemptId) return;
+      showPlaybackFailure(error);
+    });
+  });
+
+  joeyVideo.addEventListener('ended', resetWelcome);
+  joeyVideo.addEventListener('pause', () => {
+    if (joeyAudioFallback.disabled && !joeyVideo.ended) resetWelcome();
+  });
+  joeyVideo.addEventListener('error', () => {
+    showPlaybackFailure(joeyVideo.error);
+  });
+
+  window.addEventListener('pageshow', () => resetWelcome());
+}
+
 /* ================================================================
    PYRAMID — 10 tiers
 ================================================================ */
