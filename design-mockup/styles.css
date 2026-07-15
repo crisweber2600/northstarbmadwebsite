@@ -713,6 +713,34 @@ nav.top .container{
   aspect-ratio:9 / 16;
   object-fit:contain;
 }
+.joey-audio-fallback{
+  position:absolute;
+  left:50%;
+  bottom:-15%;
+  z-index:4;
+  transform:translateX(-50%);
+  width:max-content;
+  max-width:calc(100% - 32px);
+  min-height:44px;
+  box-sizing:border-box;
+  padding:11px 18px;
+  border:1px solid rgba(255,255,255,.7);
+  border-radius:999px;
+  background:rgba(10,35,67,.94);
+  box-shadow:0 10px 24px rgba(0,0,0,.3);
+  color:var(--cream);
+  font:600 .9rem/1.2 'Manrope',sans-serif;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  text-align:center;
+  cursor:pointer;
+}
+.joey-audio-fallback:hover{ background:var(--royal); }
+.joey-audio-fallback:focus-visible{
+  outline:3px solid var(--gold-bright);
+  outline-offset:3px;
+}
+.joey-audio-fallback[hidden]{ display:none; }
 .joey-stars{
   position:absolute; inset:0; pointer-events:none;
   z-index:3;

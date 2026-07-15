@@ -56,6 +56,171 @@ sections.forEach(id => {
   if (el) sectionIo.observe(el);
 });
 
+/* Joey welcome audio */
+const joeyVideo = document.querySelector('.joey-video');
+const joeyAudioFallback = document.querySelector('.joey-audio-fallback');
+
+if (joeyVideo && joeyAudioFallback) {
+  let joeyIsVisible = false;
+  let joeyIntersectionRatio = 0;
+  let greetingCompleted = false;
+  let greetingPlaying = false;
+  let playAttemptPending = false;
+  let playAttemptId = 0;
+  let mediaFailureLogged = false;
+
+  const hideAudioFallback = () => {
+    joeyAudioFallback.hidden = true;
+  };
+
+  const showAudioFallback = () => {
+    joeyAudioFallback.hidden = false;
+  };
+
+  const logMediaFailure = (error) => {
+    if (mediaFailureLogged) return;
+    mediaFailureLogged = true;
+    console.warn(`Joey welcome media playback failed: ${error?.name || 'UnknownError'}`);
+  };
+
+  const requestPlayback = () => {
+    try {
+      return Promise.resolve(joeyVideo.play());
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
+
+  const resetVideo = ({resumeMuted = false} = {}) => {
+    try {
+      joeyVideo.pause();
+      joeyVideo.muted = true;
+      joeyVideo.loop = true;
+      joeyVideo.currentTime = 0;
+    } catch (error) {
+      logMediaFailure(error);
+      return;
+    }
+
+    if (resumeMuted) {
+      requestPlayback().catch(logMediaFailure);
+    }
+  };
+
+  const stopGreeting = () => {
+    playAttemptId += 1;
+    greetingPlaying = false;
+    playAttemptPending = false;
+    hideAudioFallback();
+    resetVideo();
+  };
+
+  const attemptAudibleGreeting = () => {
+    if (greetingCompleted || !joeyIsVisible || greetingPlaying || playAttemptPending) return;
+
+    const attemptId = ++playAttemptId;
+    playAttemptPending = true;
+    greetingPlaying = false;
+
+    try {
+      joeyVideo.pause();
+      joeyVideo.loop = false;
+      joeyVideo.muted = false;
+      joeyVideo.currentTime = 0;
+    } catch (error) {
+      playAttemptPending = false;
+      hideAudioFallback();
+      logMediaFailure(error);
+      return;
+    }
+
+    requestPlayback().then(() => {
+      if (attemptId !== playAttemptId) return;
+
+      if (!joeyIsVisible) {
+        stopGreeting();
+        return;
+      }
+
+      playAttemptPending = false;
+      greetingPlaying = true;
+      hideAudioFallback();
+    }).catch((error) => {
+      if (attemptId !== playAttemptId) return;
+
+      playAttemptPending = false;
+      greetingPlaying = false;
+
+      if (error?.name === 'NotAllowedError' && joeyIsVisible) {
+        showAudioFallback();
+        resetVideo({resumeMuted: true});
+      } else if (error?.name !== 'NotAllowedError') {
+        hideAudioFallback();
+        resetVideo({resumeMuted: joeyIsVisible});
+        logMediaFailure(error);
+      }
+    });
+  };
+
+  joeyVideo.addEventListener('ended', () => {
+    if (!greetingPlaying) return;
+
+    greetingCompleted = true;
+    greetingPlaying = false;
+    playAttemptPending = false;
+    playAttemptId += 1;
+    hideAudioFallback();
+    resetVideo({resumeMuted: joeyIsVisible});
+  });
+
+  joeyVideo.addEventListener('error', () => {
+    playAttemptId += 1;
+    greetingPlaying = false;
+    playAttemptPending = false;
+    hideAudioFallback();
+
+    try {
+      joeyVideo.pause();
+      joeyVideo.muted = true;
+      joeyVideo.loop = false;
+      joeyVideo.currentTime = 0;
+    } catch {}
+
+    logMediaFailure(joeyVideo.error);
+  });
+
+  joeyAudioFallback.addEventListener('click', attemptAudibleGreeting);
+
+  const syncJoeyAudioVisibility = () => {
+    const shouldBeVisible = !document.hidden && joeyIntersectionRatio >= .5;
+
+    if (shouldBeVisible && !joeyIsVisible) {
+      joeyIsVisible = true;
+
+      if (greetingCompleted) {
+        resetVideo({resumeMuted: true});
+      } else {
+        attemptAudibleGreeting();
+      }
+    } else if (!shouldBeVisible && joeyIsVisible) {
+      joeyIsVisible = false;
+      stopGreeting();
+    } else if (!shouldBeVisible) {
+      hideAudioFallback();
+    }
+  };
+
+  const joeyAudioObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      joeyIntersectionRatio = entry.isIntersecting ? entry.intersectionRatio : 0;
+      syncJoeyAudioVisibility();
+    });
+  }, {threshold: [0, .5]});
+
+  joeyAudioObserver.observe(joeyVideo);
+  document.addEventListener('visibilitychange', syncJoeyAudioVisibility);
+}
+
 /* ================================================================
    PYRAMID — 10 tiers
 ================================================================ */
