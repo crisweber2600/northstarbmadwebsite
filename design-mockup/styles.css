@@ -679,19 +679,15 @@ nav.top .container{
 .joey-character{
   position:relative;
   display:flex; flex-direction:column; align-items:center;
+  width:100%;
+  min-width:0;
 }
 .joey-aura{
   position:relative;
   width:min(100%, 460px);
   aspect-ratio:1;
+  margin-block:min(21.111%, 97px);
   display:grid; place-items:center;
-}
-.joey-aura::before{
-  content:""; position:absolute; inset:0;
-  background: radial-gradient(circle at center, rgba(168,193,106,.5) 0%, rgba(168,193,106,.15) 35%, transparent 65%);
-  border-radius:50%;
-  filter:blur(8px);
-  animation: pulseGlow 4s ease-in-out infinite;
 }
 @keyframes pulseGlow{ 0%,100%{transform:scale(1); opacity:.85} 50%{transform:scale(1.08); opacity:1} }
 .joey-aura .ring{
@@ -701,13 +697,21 @@ nav.top .container{
 }
 .joey-aura .ring.r1{ inset:6%; animation: spin 50s linear infinite; }
 .joey-aura .ring.r2{ inset:18%; animation: spin 35s linear infinite reverse; border-style:solid; border-color:rgba(255,255,255,.1); }
-.joey-svg, .joey-img{
+.joey-svg, .joey-video{
   position:relative; z-index:2;
   width:80%;
   height:auto;
   display:block;
   margin:0 auto;
   filter: drop-shadow(0 20px 40px rgba(0,0,0,.4));
+}
+.joey-video{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  aspect-ratio:9 / 16;
+  object-fit:contain;
 }
 .joey-stars{
   position:absolute; inset:0; pointer-events:none;
@@ -732,6 +736,7 @@ nav.top .container{
   font-size:1.3rem; line-height:1.4;
   text-align:center; color:var(--cream);
   max-width:32ch;
+  width:min(100%, 540px);
 }
 .joey-quote-attr{
   margin-top:16px; font-size:.85rem;
