@@ -211,18 +211,19 @@ expressed through a dashboard built for their day-to-day work.</p>
           </div>
           <!-- Joey: friendly kangaroo character -->
           <video
+            id="joey-welcome-video"
             class="joey-video"
             aria-label="Joey the kangaroo says, Good morning, welcome to school."
             poster="assets/joey.png"
-            autoplay
-            muted
-            loop
+            preload="metadata"
+            disablepictureinpicture
+            disableremoteplayback
             playsinline
           >
             <source src="assets/joey-welcome-transparent.webm" type="video/webm" />
             Your browser does not support the Joey morning welcome video.
           </video>
-          <button class="joey-audio-fallback" type="button" aria-live="polite" hidden>
+          <button class="joey-audio-fallback" type="button" aria-controls="joey-welcome-video" aria-live="polite">
             Play Joey's welcome
           </button>
         </div>

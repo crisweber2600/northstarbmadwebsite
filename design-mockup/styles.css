@@ -712,6 +712,7 @@ nav.top .container{
   transform:translate(-50%, -50%);
   aspect-ratio:9 / 16;
   object-fit:contain;
+  pointer-events:none;
 }
 .joey-audio-fallback{
   position:absolute;
@@ -735,12 +736,15 @@ nav.top .container{
   text-align:center;
   cursor:pointer;
 }
-.joey-audio-fallback:hover{ background:var(--royal); }
+.joey-audio-fallback:not(:disabled):hover{ background:var(--royal); }
 .joey-audio-fallback:focus-visible{
   outline:3px solid var(--gold-bright);
   outline-offset:3px;
 }
-.joey-audio-fallback[hidden]{ display:none; }
+.joey-audio-fallback:disabled{
+  cursor:default;
+  opacity:.72;
+}
 .joey-stars{
   position:absolute; inset:0; pointer-events:none;
   z-index:3;

@@ -61,26 +61,27 @@ const joeyVideo = document.querySelector('.joey-video');
 const joeyAudioFallback = document.querySelector('.joey-audio-fallback');
 
 if (joeyVideo && joeyAudioFallback) {
-  let joeyIsVisible = false;
-  let joeyIntersectionRatio = 0;
-  let greetingCompleted = false;
-  let greetingPlaying = false;
-  let playAttemptPending = false;
+  const idleLabel = "Play Joey's welcome";
   let playAttemptId = 0;
-  let mediaFailureLogged = false;
 
-  const hideAudioFallback = () => {
-    joeyAudioFallback.hidden = true;
+  const resetWelcome = ({label = idleLabel} = {}) => {
+    playAttemptId += 1;
+    joeyAudioFallback.disabled = false;
+    joeyAudioFallback.textContent = label;
+
+    try {
+      joeyVideo.pause();
+      joeyVideo.muted = true;
+      joeyVideo.loop = false;
+      joeyVideo.currentTime = 0;
+    } catch (error) {
+      console.warn(`Joey welcome reset failed: ${error?.name || 'UnknownError'}`);
+    }
   };
 
-  const showAudioFallback = () => {
-    joeyAudioFallback.hidden = false;
-  };
-
-  const logMediaFailure = (error) => {
-    if (mediaFailureLogged) return;
-    mediaFailureLogged = true;
-    console.warn(`Joey welcome media playback failed: ${error?.name || 'UnknownError'}`);
+  const showPlaybackFailure = (error) => {
+    resetWelcome({label: "Unable to play — try again"});
+    console.warn(`Joey welcome playback failed: ${error?.name || 'UnknownError'}`);
   };
 
   const requestPlayback = () => {
@@ -91,134 +92,36 @@ if (joeyVideo && joeyAudioFallback) {
     }
   };
 
-  const resetVideo = ({resumeMuted = false} = {}) => {
-    try {
-      joeyVideo.pause();
-      joeyVideo.muted = true;
-      joeyVideo.loop = true;
-      joeyVideo.currentTime = 0;
-    } catch (error) {
-      logMediaFailure(error);
-      return;
-    }
-
-    if (resumeMuted) {
-      requestPlayback().catch(logMediaFailure);
-    }
-  };
-
-  const stopGreeting = () => {
-    playAttemptId += 1;
-    greetingPlaying = false;
-    playAttemptPending = false;
-    hideAudioFallback();
-    resetVideo();
-  };
-
-  const attemptAudibleGreeting = () => {
-    if (greetingCompleted || !joeyIsVisible || greetingPlaying || playAttemptPending) return;
-
+  joeyAudioFallback.addEventListener('click', () => {
     const attemptId = ++playAttemptId;
-    playAttemptPending = true;
-    greetingPlaying = false;
 
     try {
-      joeyVideo.pause();
       joeyVideo.loop = false;
       joeyVideo.muted = false;
       joeyVideo.currentTime = 0;
     } catch (error) {
-      playAttemptPending = false;
-      hideAudioFallback();
-      logMediaFailure(error);
+      showPlaybackFailure(error);
       return;
     }
 
-    requestPlayback().then(() => {
+    joeyAudioFallback.disabled = true;
+    joeyAudioFallback.textContent = "Playing Joey's welcome…";
+
+    requestPlayback().catch((error) => {
       if (attemptId !== playAttemptId) return;
-
-      if (!joeyIsVisible) {
-        stopGreeting();
-        return;
-      }
-
-      playAttemptPending = false;
-      greetingPlaying = true;
-      hideAudioFallback();
-    }).catch((error) => {
-      if (attemptId !== playAttemptId) return;
-
-      playAttemptPending = false;
-      greetingPlaying = false;
-
-      if (error?.name === 'NotAllowedError' && joeyIsVisible) {
-        showAudioFallback();
-        resetVideo({resumeMuted: true});
-      } else if (error?.name !== 'NotAllowedError') {
-        hideAudioFallback();
-        resetVideo({resumeMuted: joeyIsVisible});
-        logMediaFailure(error);
-      }
+      showPlaybackFailure(error);
     });
-  };
-
-  joeyVideo.addEventListener('ended', () => {
-    if (!greetingPlaying) return;
-
-    greetingCompleted = true;
-    greetingPlaying = false;
-    playAttemptPending = false;
-    playAttemptId += 1;
-    hideAudioFallback();
-    resetVideo({resumeMuted: joeyIsVisible});
   });
 
+  joeyVideo.addEventListener('ended', resetWelcome);
+  joeyVideo.addEventListener('pause', () => {
+    if (joeyAudioFallback.disabled && !joeyVideo.ended) resetWelcome();
+  });
   joeyVideo.addEventListener('error', () => {
-    playAttemptId += 1;
-    greetingPlaying = false;
-    playAttemptPending = false;
-    hideAudioFallback();
-
-    try {
-      joeyVideo.pause();
-      joeyVideo.muted = true;
-      joeyVideo.loop = false;
-      joeyVideo.currentTime = 0;
-    } catch {}
-
-    logMediaFailure(joeyVideo.error);
+    showPlaybackFailure(joeyVideo.error);
   });
 
-  joeyAudioFallback.addEventListener('click', attemptAudibleGreeting);
-
-  const syncJoeyAudioVisibility = () => {
-    const shouldBeVisible = !document.hidden && joeyIntersectionRatio >= .5;
-
-    if (shouldBeVisible && !joeyIsVisible) {
-      joeyIsVisible = true;
-
-      if (greetingCompleted) {
-        resetVideo({resumeMuted: true});
-      } else {
-        attemptAudibleGreeting();
-      }
-    } else if (!shouldBeVisible && joeyIsVisible) {
-      joeyIsVisible = false;
-      stopGreeting();
-    } else if (!shouldBeVisible) {
-      hideAudioFallback();
-    }
-  };
-
-  const joeyAudioObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      joeyIntersectionRatio = entry.isIntersecting ? entry.intersectionRatio : 0;
-      syncJoeyAudioVisibility();
-    });
-  }, {threshold: [0, .5]});
-
-  joeyAudioObserver.observe(joeyVideo);
-  document.addEventListener('visibilitychange', syncJoeyAudioVisibility);
+  window.addEventListener('pageshow', () => resetWelcome());
 }
 
 /* ================================================================
